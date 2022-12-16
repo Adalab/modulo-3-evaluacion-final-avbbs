@@ -1,0 +1,28 @@
+@import "../core/variables";
+@import "../core/functions";
+@import "../core/mixins";
+
+.sectionSpecies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-page;
+  color: $color-details;
+  padding: 10px 0 40px 0;
+  @include tablet {
+    padding: 15px;
+  }
+  &__label {
+    padding-right: 5px;
+    font-size: 14px;
+    @include tablet {
+      padding-right: 7px;
+      font-size: 17px;
+    }
+  }
+  &__select {
+    background-color: $color-page;
+    color: grey;
+    border-color: $color-details;
+  }
+}

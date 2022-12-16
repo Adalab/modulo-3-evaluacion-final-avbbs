@@ -1,17 +1,21 @@
 import {Link} from 'react-router-dom';
+import '../styles/layout/CharacterCard.scss';
 
 
 const CharacterCard = (props) => {
   return (
     <li>
-      <Link to={`cartoon/${props.cartoon.id}`} target="_blank">
-        <article>
+      <Link to={`cartoon/${props.cartoon.id}`} className='link'>
+        <article className='article'>
           <img
             src={props.cartoon.image}
             alt={`Foto de ${props.cartoon.name}`}
+            className='article__image'
           />
-          <h3>{props.cartoon.name}</h3>
-          <p>{props.cartoon.species}</p>
+          <div className='article__div'>
+            <h3 className='article__div--title'>{props.cartoon.name}</h3>
+            <p className='article__div--text'>{props.cartoon.species}</p>
+          </div>
         </article>
       </Link>
     </li>

@@ -1,0 +1,28 @@
+@import "../core/variables";
+@import "../core/functions";
+@import "../core/mixins";
+
+.sectionList {
+  background-color: $color-page;
+  padding: 20px 30px 30px 30px;
+  @include tablet {
+    padding: 50px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 250px);
+      grid-gap: 30px 20px;
+      justify-content: center;
+    }
+    @include desktop{
+      grid-template-columns: repeat(4, 250px);
+      grid-gap: 20px 10px;
+    }
+  }
+}

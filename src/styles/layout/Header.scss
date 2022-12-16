@@ -1,0 +1,24 @@
+@import "../core/variables";
+@import "../core/functions";
+@import "../core/mixins";
+
+.header {
+  background-color: $color-page;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 5px 5px 5px;
+  @include tablet {
+    height: 31vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+  }
+  &__image {
+    max-height: 80px;
+    @include tablet {
+      max-height: 200px;
+    }
+  }
+}

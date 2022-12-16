@@ -1,0 +1,40 @@
+@import "../core/variables";
+@import "../core/functions";
+@import "../core/mixins";
+
+.form {
+  display: flex;
+  justify-content: center;
+  background-color: $color-page;
+  padding-bottom: 10px;
+  @include tablet {
+    padding-top: 20px;
+  }
+
+  &__search {
+    width: rem(200);
+    height: rem(25);
+    font-family: $font-page;
+    font-size: 14px;
+    color: green;
+    transition: color;
+    border: 3px dashed $color-details;
+    background-color: $color-page;
+    padding: 5px;
+    @include tablet {
+      width: rem(400);
+      height: rem(60);
+      font-family: $font-page;
+      font-size: 16px;
+      color: green;
+      transition: color;
+      border: 5px dashed $color-details;
+      background-color: $color-page;
+      padding-left: 10px;
+      padding-right: 5px;
+    }
+  }
+  &__search:hover {
+    color: white;
+  }
+}

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import dataApi from "../services/api.js";
 import { Routes, Route, matchPath, useLocation } from "react-router-dom";
+import ls from "../services/localStorage";
 //styles
 import "../styles/App.scss";
 //components
@@ -15,7 +16,7 @@ function App() {
 
   const [dataCartoon, setDataCartoon] = useState([]);
   const [filterSpecies, setFilterSpecies] = useState("all");
-  const [filterName, setFilterName] = useState("");
+  const [filterName, setFilterName] = useState(ls.get("nameCartoon", ""));
 
   //USEEFFECT
 
@@ -28,7 +29,9 @@ function App() {
   //FUNCIONES HANDLE
 
   const handleFilterName = (value) => {
+    
     setFilterName(value);
+    ls.set("nameCartoon",value);
   };
 
   const handleFilterSpecies = (value) => {
@@ -39,7 +42,7 @@ function App() {
 
   const cartoonsFiltered = dataCartoon
 
-    .filter((nameCartoon) =>
+    .filter((nameCartoon) => 
       nameCartoon.name.toLowerCase().includes(filterName.toLowerCase())
     )
 
@@ -47,10 +50,11 @@ function App() {
       return filterSpecies === "all" ? true : cartoon.species === filterSpecies;
     });
 
+  
   const { pathname } = useLocation();
   const dataUrl = matchPath("/cartoon/:cartoonId", pathname);
   const cartoonId = dataUrl !== null ? dataUrl.params.cartoonId : null;
-  const cartoonFound = dataCartoon.find((cartoon) => cartoon.id === cartoonId);
+  const cartoonFound = dataCartoon.find((cartoon) => cartoon.id === parseInt(cartoonId));
 
   //RETURN HTML
   return (
@@ -65,6 +69,7 @@ function App() {
                 <Filters
                   handleFilterName={handleFilterName}
                   handleFilterSpecies={handleFilterSpecies}
+                  filterName={filterName}
                 />
 
                 <CharacterList cartoons={cartoonsFiltered} />

@@ -1,0 +1,100 @@
+@import "../core/variables";
+@import "../core/functions";
+@import "../core/mixins";
+
+.mainDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: $color-page;
+  height: 100vh;
+}
+.articleDetail {
+  width: 280px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(
+    -50deg,
+    #394e3d,
+    #023513,
+    rgb(41, 112, 41),
+    #000000
+  );
+  background-size: 100% 100%;
+  animation: gradient 10s ease infinite;
+  @include tablet {
+    width: 500px;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+  }
+  @include desktop {
+    width: 800px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  &__image {
+    width: 200px;
+    height: 200px;
+    border: 5px solid black;
+    border-radius: 5%;
+    @include desktop{
+        width: 270px;
+        height: 270px;
+    }
+  }
+  &__title {
+    font-family: $font-page;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 3px;
+    @include tablet {
+      font-size: 20px;
+    }
+    @include desktop {
+        font-size: 24px;
+        padding-bottom: 5px;
+    }
+  }
+  &__list {
+    font-family: $font-page;
+    font-size: 16px;
+    color: rgb(168, 159, 159);
+    &--item {
+      padding: 2px;
+    }
+    @include desktop{
+        font-size: 20px;
+    }
+  }
+}
+.div {
+  @include tablet {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  @include desktop{
+    padding-right: 20px;
+  }
+}
+.link {
+  color: rgb(8, 99, 5);
+  font-family: $font-page;
+  font-size: 18px;
+  font-weight: bolder;
+  padding-top: 4px;
+  text-decoration: underline;
+  @include desktop{
+    font-size: 24px;
+  }
+}

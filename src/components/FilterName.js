@@ -1,3 +1,5 @@
+import '../styles/layout/FilterName.scss';
+
 const FilterName = (props) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -8,12 +10,13 @@ const FilterName = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='form'>
       <input
+        className='form__search'
         type="search"
         name="search"
-        placeholder="Búsqueda por nombre"
-        value={props.name}
+        placeholder="Search by name"
+        value={props.filterName}
         onChange={handleInputChange}
       />
     </form>
