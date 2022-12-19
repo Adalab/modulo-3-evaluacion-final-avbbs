@@ -17,7 +17,7 @@ function App() {
   const [dataCartoon, setDataCartoon] = useState([]);
   const [filterSpecies, setFilterSpecies] = useState("all");
   const [filterName, setFilterName] = useState(ls.get("nameCartoon", ""));
-
+  const [filterLocation, setFilterLocation] = useState("");
   //USEEFFECT
 
   useEffect(() => {
@@ -38,6 +38,13 @@ function App() {
     setFilterSpecies(value);
   };
 
+  const handleFilterLocation = (value) => {
+    setFilterLocation(value);
+  };
+
+
+  
+
   //FUNCIONES RENDERIZAR
 
   const cartoonsFiltered = dataCartoon
@@ -48,9 +55,13 @@ function App() {
 
     .filter((cartoon) => {
       return filterSpecies === "all" ? true : cartoon.species === filterSpecies;
-    });
+    })
 
-  
+    .filter((locationCartoon) =>
+      locationCartoon.planet.toLowerCase().includes(filterLocation.toLowerCase())
+    );
+
+  //ROUTES
   const { pathname } = useLocation();
   const dataUrl = matchPath("/cartoon/:cartoonId", pathname);
   const cartoonId = dataUrl !== null ? dataUrl.params.cartoonId : null;
@@ -68,8 +79,9 @@ function App() {
               <main>
                 <Filters
                   handleFilterName={handleFilterName}
-                  handleFilterSpecies={handleFilterSpecies}
                   filterName={filterName}
+                  handleFilterSpecies={handleFilterSpecies}
+                  handleFilterLocation={handleFilterLocation}
                 />
 
                 <CharacterList cartoons={cartoonsFiltered} />

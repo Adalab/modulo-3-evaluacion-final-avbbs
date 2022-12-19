@@ -15,6 +15,7 @@ const CharacterCard = (props) => {
           <div className='article__div'>
             <h3 className='article__div--title'>{props.cartoon.name}</h3>
             <p className='article__div--text'>{props.cartoon.species}</p>
+            <p>{props.cartoon.planet}</p>
           </div>
         </article>
       </Link>
